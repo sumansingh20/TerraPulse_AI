@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { AdvancedThemeProvider } from '@/components/advanced-theme-provider'
+import { SimpleThemeProvider } from '@/components/simple-theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import '../styles/themes.css'
@@ -63,17 +63,17 @@ export default function RootLayout({
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-background`}
         suppressHydrationWarning
       >
-        <AdvancedThemeProvider
+        <SimpleThemeProvider
           attribute="class"
-          defaultTheme="nature"
-          enableSystem
-          themes={['light', 'dark', 'nature', 'earth', 'sky', 'harvest', 'carbon']}
+          defaultTheme="light"
+          enableSystem={true}
+          themes={['light', 'dark', 'nature']}
         >
           <div className="relative z-10">
             {children}
           </div>
           <Toaster />
-        </AdvancedThemeProvider>
+        </SimpleThemeProvider>
       </body>
     </html>
   )

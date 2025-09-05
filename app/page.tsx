@@ -24,7 +24,7 @@ import {
 import { AIChatbot } from "@/components/ai-chatbot"
 import { RealTimeDashboard } from "@/components/real-time-dashboard"
 import { RealInteractiveMap } from "@/components/real-interactive-map"
-import { AdvancedThemeSelector } from "@/components/advanced-theme-selector"
+import { SimpleThemeSelector } from "@/components/simple-theme-selector"
 import { MetricCard, GlassCard, GradientCard, CardGrid } from "@/components/advanced-3d-card"
 import { ClientOnly } from "@/components/client-only"
 import { MainNavigation } from "@/components/main-navigation"
@@ -75,7 +75,7 @@ export default function TerraPulseAI() {
               <Users className="h-4 w-4" />
               Team
             </a>
-            <AdvancedThemeSelector />
+            <SimpleThemeSelector />
             <Link href="/nabard-dashboard">
               <Button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg group text-white font-semibold">
                 <Target className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
@@ -86,7 +86,7 @@ export default function TerraPulseAI() {
           </nav>
           <div className="lg:hidden flex items-center gap-2">
             <MainNavigation />
-            <AdvancedThemeSelector />
+            <SimpleThemeSelector />
           </div>
         </div>
       </header>
