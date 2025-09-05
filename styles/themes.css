@@ -1,0 +1,268 @@
+/* Advanced Agricultural Theme System */
+:root {
+  /* Modern Agricultural Theme */
+  --color-primary: 34 197 94; /* Green-500 */
+  --color-primary-foreground: 255 255 255;
+  --color-secondary: 168 85 247; /* Purple-500 */
+  --color-secondary-foreground: 255 255 255;
+  
+  /* Earth Tones */
+  --color-earth-brown: 120 53 15; /* Brown-800 */
+  --color-earth-green: 22 101 52; /* Green-800 */
+  --color-earth-blue: 30 58 138; /* Blue-900 */
+  --color-earth-yellow: 161 98 7; /* Yellow-700 */
+  
+  /* Gradient Backgrounds */
+  --gradient-primary: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  --gradient-secondary: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  --gradient-earth: linear-gradient(135deg, #166534 0%, #365314 50%, #78350f 100%);
+  --gradient-sky: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+  
+  /* Glass Morphism */
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-backdrop: blur(10px);
+  
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-nature: 0 10px 30px rgba(34, 197, 94, 0.3);
+  
+  /* Custom Properties for Agriculture */
+  --color-soil: 120 53 15;
+  --color-crop: 34 197 94;
+  --color-water: 59 130 246;
+  --color-sun: 251 191 36;
+  --color-carbon: 71 85 105;
+}
+
+/* Theme Specific Color Palettes */
+.theme-nature {
+  --color-theme-primary: hsl(142 76% 36%);
+  --color-theme-secondary: hsl(120 60% 25%);
+  --color-theme-accent: hsl(84 81% 44%);
+  --color-theme-background: hsl(120 25% 98%);
+  --color-theme-foreground: hsl(120 15% 15%);
+}
+
+.theme-earth {
+  --color-theme-primary: hsl(30 100% 20%);
+  --color-theme-secondary: hsl(30 60% 30%);
+  --color-theme-accent: hsl(45 85% 35%);
+  --color-theme-background: hsl(30 20% 98%);
+  --color-theme-foreground: hsl(30 15% 15%);
+}
+
+.theme-sky {
+  --color-theme-primary: hsl(200 100% 45%);
+  --color-theme-secondary: hsl(220 60% 35%);
+  --color-theme-accent: hsl(190 85% 40%);
+  --color-theme-background: hsl(200 25% 98%);
+  --color-theme-foreground: hsl(200 15% 15%);
+}
+
+.theme-harvest {
+  --color-theme-primary: hsl(45 100% 40%);
+  --color-theme-secondary: hsl(35 80% 35%);
+  --color-theme-accent: hsl(25 85% 45%);
+  --color-theme-background: hsl(45 25% 98%);
+  --color-theme-foreground: hsl(45 15% 15%);
+}
+
+.theme-carbon {
+  --color-theme-primary: hsl(210 40% 35%);
+  --color-theme-secondary: hsl(210 30% 25%);
+  --color-theme-accent: hsl(142 76% 36%);
+  --color-theme-background: hsl(210 20% 98%);
+  --color-theme-foreground: hsl(210 15% 15%);
+}
+
+/* Dark mode variations */
+.dark {
+  --color-primary: 74 222 128; /* Green-400 */
+  --color-secondary: 196 181 253; /* Purple-300 */
+  
+  --glass-background: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-nature: 0 10px 30px rgba(74, 222, 128, 0.2);
+}
+
+.dark.theme-nature {
+  --color-theme-background: hsl(120 25% 8%);
+  --color-theme-foreground: hsl(120 15% 85%);
+}
+
+.dark.theme-earth {
+  --color-theme-background: hsl(30 20% 8%);
+  --color-theme-foreground: hsl(30 15% 85%);
+}
+
+.dark.theme-sky {
+  --color-theme-background: hsl(200 25% 8%);
+  --color-theme-foreground: hsl(200 15% 85%);
+}
+
+.dark.theme-harvest {
+  --color-theme-background: hsl(45 25% 8%);
+  --color-theme-foreground: hsl(45 15% 85%);
+}
+
+.dark.theme-carbon {
+  --color-theme-background: hsl(210 20% 8%);
+  --color-theme-foreground: hsl(210 15% 85%);
+}
+
+/* Glass morphism utility class */
+.glass {
+  background: var(--glass-background);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-enabled .glass {
+  background: var(--glass-background);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+/* Particle canvas styling */
+.particle-canvas {
+  background: transparent;
+}
+
+.floating-element {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Agricultural gradient backgrounds */
+.bg-gradient-earth {
+  background: var(--gradient-earth);
+}
+
+.bg-gradient-sky {
+  background: var(--gradient-sky);
+}
+
+.bg-gradient-nature {
+  background: linear-gradient(135deg, 
+    hsl(var(--color-crop)) 0%, 
+    hsl(var(--color-earth-green)) 50%, 
+    hsl(var(--color-soil)) 100%);
+}
+
+/* Advanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-nature {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 5px currentColor); }
+  50% { filter: drop-shadow(0 0 20px currentColor); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-nature {
+  animation: pulse-nature 2s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Modern card styles */
+.card-elevated {
+  box-shadow: var(--shadow-elevated);
+  transition: all 0.3s ease;
+}
+
+.card-elevated:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-nature);
+}
+
+/* Agricultural status indicators */
+.status-healthy {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.status-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.status-critical {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+/* Nature-inspired patterns */
+.pattern-organic {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+}
+
+.pattern-soil {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Responsive design utilities */
+@media (max-width: 768px) {
+  .glass {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass {
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-nature,
+  .animate-shimmer,
+  .animate-glow {
+    animation: none;
+  }
+}
