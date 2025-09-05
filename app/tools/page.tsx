@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import {
-  Leaf,
   Smartphone,
   Globe,
   TrendingUp,
@@ -17,11 +16,7 @@ import {
   Satellite,
   ArrowRight,
   CheckCircle,
-  Star,
   Target,
-  MapPin,
-  CloudRain,
-  Sprout,
   Calculator,
   Database,
   Bell,
@@ -29,21 +24,12 @@ import {
   Activity,
   PieChart,
   LineChart,
-  Settings,
-  Lock,
-  Wifi,
   Wrench,
-  Monitor,
   Calendar,
   CreditCard,
   FileText,
   MessageSquare,
   Phone,
-  Search,
-  Filter,
-  Download,
-  Upload,
-  Share2,
   Camera,
 } from "lucide-react"
 
@@ -311,8 +297,8 @@ export default function ToolsPage() {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {analyticsTools.map((tool, index) => (
-                  <Card key={index} className="group hover:shadow-xl transition-all duration-300">
+                {analyticsTools.map((tool) => (
+                  <Card key={tool.name} className="group hover:shadow-xl transition-all duration-300">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-4">
                         <div className="p-3 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300">
@@ -327,8 +313,8 @@ export default function ToolsPage() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2 mb-4">
-                        {tool.features.map((feature, i) => (
-                          <div key={i} className="flex items-center space-x-2">
+                        {tool.features.map((feature) => (
+                          <div key={feature} className="flex items-center space-x-2">
                             <CheckCircle className="h-4 w-4 text-blue-600" />
                             <span className="text-sm text-muted-foreground">{feature}</span>
                           </div>
@@ -360,8 +346,8 @@ export default function ToolsPage() {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {managementTools.map((tool, index) => (
-                  <Card key={index} className="group hover:shadow-xl transition-all duration-300">
+                {managementTools.map((tool) => (
+                  <Card key={tool.name} className="group hover:shadow-xl transition-all duration-300">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-4">
                         <div className="p-3 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 group-hover:from-purple-200 group-hover:to-pink-200 transition-all duration-300">
@@ -376,8 +362,8 @@ export default function ToolsPage() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2 mb-4">
-                        {tool.features.map((feature, i) => (
-                          <div key={i} className="flex items-center space-x-2">
+                        {tool.features.map((feature) => (
+                          <div key={feature} className="flex items-center space-x-2">
                             <CheckCircle className="h-4 w-4 text-purple-600" />
                             <span className="text-sm text-muted-foreground">{feature}</span>
                           </div>
@@ -409,8 +395,8 @@ export default function ToolsPage() {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {nabardTools.map((tool, index) => (
-                  <Card key={index} className="group hover:shadow-xl transition-all duration-300 p-6">
+                {nabardTools.map((tool) => (
+                  <Card key={tool.name} className="group hover:shadow-xl transition-all duration-300 p-6">
                     <div className="flex items-start space-x-4">
                       <div className="p-3 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 group-hover:from-amber-200 group-hover:to-orange-200 transition-all duration-300">
                         <tool.icon className="h-6 w-6 text-amber-600" />
@@ -423,8 +409,8 @@ export default function ToolsPage() {
                           <div>
                             <h4 className="font-medium mb-2 text-sm">Core Features:</h4>
                             <div className="space-y-1">
-                              {tool.features.map((feature, i) => (
-                                <div key={i} className="flex items-center space-x-2">
+                              {tool.features.map((feature) => (
+                                <div key={feature} className="flex items-center space-x-2">
                                   <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
                                   <span className="text-sm text-muted-foreground">{feature}</span>
                                 </div>
@@ -434,8 +420,8 @@ export default function ToolsPage() {
                           <div>
                             <h4 className="font-medium mb-2 text-sm">Capabilities:</h4>
                             <div className="space-y-1">
-                              {tool.capabilities.map((capability, i) => (
-                                <div key={i} className="flex items-center space-x-2">
+                              {tool.capabilities.map((capability) => (
+                                <div key={capability} className="flex items-center space-x-2">
                                   <CheckCircle className="h-3 w-3 text-emerald-600" />
                                   <span className="text-sm text-muted-foreground">{capability}</span>
                                 </div>
@@ -616,8 +602,8 @@ export default function ToolsPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {mobileTools.map((tool, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300">
+            {mobileTools.map((tool) => (
+              <Card key={tool.name} className="group hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <div className="p-3 rounded-xl bg-gradient-to-br from-teal-100 to-cyan-100 group-hover:from-teal-200 group-hover:to-cyan-200 transition-all duration-300 w-fit mb-4">
                     <tool.icon className="h-6 w-6 text-teal-600" />
@@ -629,16 +615,16 @@ export default function ToolsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 mb-4">
-                    {tool.features.map((feature, i) => (
-                      <div key={i} className="flex items-center space-x-2">
+                    {tool.features.map((feature) => (
+                      <div key={feature} className="flex items-center space-x-2">
                         <CheckCircle className="h-4 w-4 text-teal-600" />
                         <span className="text-sm text-muted-foreground">{feature}</span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {tool.platforms.map((platform, i) => (
-                      <Badge key={i} variant="outline" className="text-xs">
+                    {tool.platforms.map((platform) => (
+                      <Badge key={platform} variant="outline" className="text-xs">
                         {platform}
                       </Badge>
                     ))}

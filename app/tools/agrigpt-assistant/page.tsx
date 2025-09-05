@@ -1,19 +1,15 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import {
   Brain,
-  CheckCircle,
   MessageSquare,
   Globe,
   Sparkles,
-  Play,
-  Download,
-  Smartphone,
   Clock,
   Users,
-  Zap,
+  Smartphone,
 } from "lucide-react"
 
 export default function AgriGPTAssistantPage() {

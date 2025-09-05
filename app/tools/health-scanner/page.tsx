@@ -12,10 +12,7 @@ import {
   AlertTriangle,
   TrendingUp,
   Settings,
-  Play,
   Download,
-  Smartphone,
-  Shield,
   Search,
   FileText,
 } from "lucide-react"
