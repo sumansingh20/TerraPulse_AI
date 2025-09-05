@@ -27,7 +27,12 @@ import {
   CheckCircle2,
 } from "lucide-react"
 import Link from "next/link"
-import { RealInteractiveMap } from "@/components/real-interactive-map"
+import dynamic from "next/dynamic"
+
+const RealInteractiveMap = dynamic(() => import("@/components/real-map-viewer"), { 
+  ssr: false,
+  loading: () => <div className="flex items-center justify-center h-64 bg-muted/30 rounded-lg">Loading map...</div>
+})
 
 export default function FarmerDashboard() {
   const [currentWeather] = useState({
@@ -37,7 +42,7 @@ export default function FarmerDashboard() {
     windSpeed: 12,
   })
 
-  const [farmData, setFarmData] = useState({
+  const [farmData] = useState({
     totalArea: 45,
     cropTypes: 3,
     soilHealth: 87,
@@ -45,7 +50,7 @@ export default function FarmerDashboard() {
     lastUpdated: new Date().toLocaleString()
   })
 
-  const [alerts, setAlerts] = useState([
+  const [alerts] = useState([
     {
       id: 1,
       type: "warning",
@@ -64,7 +69,9 @@ export default function FarmerDashboard() {
 
   const handleLogout = () => {
     // In a real app, clear authentication tokens
-    window.location.href = '/auth/login'
+    if (typeof window !== 'undefined') {
+      window.location.href = '/auth/login'
+    }
   }
 
   return (
@@ -193,7 +200,20 @@ export default function FarmerDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="h-96 rounded-lg overflow-hidden">
-                  <RealInteractiveMap />
+                  <RealInteractiveMap 
+                    selectedLayer="satellite"
+                    farmMarkers={[
+                      { id: 1, lat: 28.6139, lng: 77.2090, name: "Main Farm", crop: "Wheat", health: 85 }
+                    ]}
+                    liveData={{ 
+                      carbonSequestration: 12.5,
+                      soilHealth: 78,
+                      temperature: currentWeather.temperature, 
+                      humidity: currentWeather.humidity,
+                      windSpeed: currentWeather.windSpeed,
+                      rainfall: currentWeather.rainfall
+                    }}
+                  />
                 </div>
               </CardContent>
             </Card>

@@ -69,7 +69,9 @@ export default function AdminDashboard() {
   ])
 
   const handleLogout = () => {
-    window.location.href = '/auth/login'
+    if (typeof window !== 'undefined') {
+      window.location.href = '/auth/login'
+    }
   }
 
   const getStatusColor = (type: string) => {

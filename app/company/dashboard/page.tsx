@@ -54,7 +54,9 @@ export default function CompanyDashboard() {
   ])
 
   const handleLogout = () => {
-    window.location.href = '/auth/login'
+    if (typeof window !== 'undefined') {
+      window.location.href = '/auth/login'
+    }
   }
 
   return (
