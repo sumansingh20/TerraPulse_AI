@@ -25,7 +25,7 @@ import { AIChatbot } from "@/components/ai-chatbot"
 import { RealTimeDashboard } from "@/components/real-time-dashboard"
 import { RealInteractiveMap } from "@/components/real-interactive-map"
 import { SimpleThemeSelector } from "@/components/simple-theme-selector"
-import { MetricCard, GlassCard, GradientCard, CardGrid } from "@/components/advanced-3d-card"
+// import { MetricCard, GlassCard, GradientCard, CardGrid } from "@/components/advanced-3d-card"
 import { ClientOnly } from "@/components/client-only"
 import { MainNavigation } from "@/components/main-navigation"
 
@@ -157,7 +157,7 @@ export default function TerraPulseAI() {
       </section>
 
       {/* Key Metrics Section with Advanced 3D Cards */}
-      <section className="py-16 px-4 -mt-16 relative z-20">
+      {/* <section className="py-16 px-4 -mt-16 relative z-20">
         <div className="container mx-auto max-w-7xl">
           <CardGrid cols={4} gap="lg">
             <MetricCard
@@ -198,7 +198,7 @@ export default function TerraPulseAI() {
             />
           </CardGrid>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose TerraPulse AI Section */}
       <section id="advantages" className="py-12 px-4 bg-gradient-to-b from-emerald-50/50 to-green-50/30 dark:from-emerald-950/20 dark:to-green-950/10">
