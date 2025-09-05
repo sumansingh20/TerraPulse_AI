@@ -44,6 +44,7 @@ import {
   Download,
   Upload,
   Share2,
+  Camera,
 } from "lucide-react"
 
 export default function ToolsPage() {
@@ -54,7 +55,9 @@ export default function ToolsPage() {
       description: "Advanced satellite imagery analysis for crop health monitoring",
       features: ["Real-time satellite data", "Multi-spectral analysis", "Historical comparisons", "Automated alerts"],
       status: "Active",
-      usage: "24/7"
+      usage: "24/7",
+      version: "v3.2",
+      newFeatures: ["Hyperspectral imaging", "3D terrain mapping", "Carbon footprint tracking"]
     },
     {
       icon: Eye,
@@ -62,7 +65,9 @@ export default function ToolsPage() {
       description: "AI-powered field monitoring with drone and ground sensor integration",
       features: ["Drone mapping", "Soil sensors", "Weather stations", "Growth tracking"],
       status: "Active",
-      usage: "Continuous"
+      usage: "Continuous",
+      version: "v2.8",
+      newFeatures: ["AI crop counting", "Pest heat mapping", "Irrigation zone optimization"]
     },
     {
       icon: Activity,
@@ -70,7 +75,9 @@ export default function ToolsPage() {
       description: "Crop disease and pest detection using computer vision",
       features: ["Disease identification", "Pest recognition", "Treatment plans", "Progress tracking"],
       status: "Active",
-      usage: "On-demand"
+      usage: "On-demand",
+      version: "v4.1",
+      newFeatures: ["Plant stress analysis", "Nutrient deficiency alerts", "Recovery monitoring"]
     }
   ]
 
@@ -237,31 +244,50 @@ export default function ToolsPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {monitoringTools.map((tool, index) => (
-                  <Card key={index} className="group hover:shadow-xl transition-all duration-300">
-                    <CardHeader>
+                  <Card key={tool.name} className="group hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div className="absolute top-4 right-4 flex gap-2">
+                      <Badge className="bg-green-100 text-green-800">{tool.status}</Badge>
+                      <Badge variant="outline" className="text-xs">{tool.version}</Badge>
+                    </div>
+                    <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
                         <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-100 to-green-100 group-hover:from-emerald-200 group-hover:to-green-200 transition-all duration-300">
                           <tool.icon className="h-6 w-6 text-emerald-600" />
                         </div>
-                        <Badge className="bg-green-100 text-green-800">{tool.status}</Badge>
                       </div>
                       <CardTitle className="text-xl">{tool.name}</CardTitle>
                       <CardDescription className="text-base">
                         {tool.description}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="space-y-4">
                       <div className="space-y-2 mb-4">
                         {tool.features.map((feature, i) => (
-                          <div key={i} className="flex items-center space-x-2">
+                          <div key={feature} className="flex items-center space-x-2">
                             <CheckCircle className="h-4 w-4 text-emerald-600" />
                             <span className="text-sm text-muted-foreground">{feature}</span>
                           </div>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between text-sm">
+                      
+                      <div className="border-t pt-3">
+                        <h4 className="text-sm font-semibold text-amber-600 mb-2 flex items-center">
+                          <Sparkles className="h-4 w-4 mr-1" />
+                          Latest Updates:
+                        </h4>
+                        <div className="space-y-1">
+                          {tool.newFeatures.map((newFeature, i) => (
+                            <div key={newFeature} className="flex items-center space-x-2">
+                              <Zap className="h-3 w-3 text-blue-500" />
+                              <span className="text-xs text-muted-foreground font-medium">{newFeature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between text-sm pt-2 border-t">
                         <span className="text-muted-foreground">Usage:</span>
-                        <span className="font-medium">{tool.usage}</span>
+                        <span className="font-medium text-emerald-600">{tool.usage}</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -406,6 +432,158 @@ export default function ToolsPage() {
               </div>
             </TabsContent>
           </Tabs>
+        </div>
+      </section>
+
+      {/* Revolutionary AI Tools */}
+      <section className="py-16 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+              🤖 AI-Powered Revolution
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Next-Generation Agricultural AI Tools
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Experience breakthrough AI technologies that are revolutionizing agriculture across India and the world
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            <Card className="group hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white via-indigo-50 to-purple-50 border-2 border-indigo-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400 to-purple-400 opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+              <CardHeader>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300">
+                    <Brain className="h-8 w-8 text-indigo-600" />
+                  </div>
+                  <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white">NEW</Badge>
+                </div>
+                <CardTitle className="text-2xl mb-3">AgriGPT Assistant</CardTitle>
+                <CardDescription className="text-base">
+                  ChatGPT-powered farming advisor with deep agricultural knowledge trained on Indian farming practices
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-indigo-600">12+</div>
+                    <div className="text-xs text-muted-foreground">Languages</div>
+                  </div>
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-600">24/7</div>
+                    <div className="text-xs text-muted-foreground">Available</div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <MessageSquare className="h-4 w-4 text-indigo-600" />
+                    <span className="text-sm">Voice & text conversation</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Globe className="h-4 w-4 text-indigo-600" />
+                    <span className="text-sm">Local crop expertise</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Sparkles className="h-4 w-4 text-indigo-600" />
+                    <span className="text-sm">Smart recommendations</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="group hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 border-2 border-green-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-400 opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+              <CardHeader>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200 transition-all duration-300">
+                    <Eye className="h-8 w-8 text-green-600" />
+                  </div>
+                  <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white">HOT</Badge>
+                </div>
+                <CardTitle className="text-2xl mb-3">Vision AI Scanner</CardTitle>
+                <CardDescription className="text-base">
+                  Advanced computer vision for instant disease detection and crop analysis using smartphone camera
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">96%</div>
+                    <div className="text-xs text-muted-foreground">Accuracy</div>
+                  </div>
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-emerald-600">500+</div>
+                    <div className="text-xs text-muted-foreground">Diseases</div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Camera className="h-4 w-4 text-green-600" />
+                    <span className="text-sm">Instant photo analysis</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Zap className="h-4 w-4 text-green-600" />
+                    <span className="text-sm">Offline processing</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Target className="h-4 w-4 text-green-600" />
+                    <span className="text-sm">Treatment suggestions</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="group hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white via-blue-50 to-cyan-50 border-2 border-blue-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400 to-cyan-400 opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+              <CardHeader>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 group-hover:from-blue-200 group-hover:to-cyan-200 transition-all duration-300">
+                    <TrendingUp className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white">SMART</Badge>
+                </div>
+                <CardTitle className="text-2xl mb-3">Market Predictor AI</CardTitle>
+                <CardDescription className="text-base">
+                  AI-powered market analysis and price prediction for optimal selling decisions
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">90%</div>
+                    <div className="text-xs text-muted-foreground">Prediction</div>
+                  </div>
+                  <div className="p-3 bg-white/60 rounded-lg">
+                    <div className="text-2xl font-bold text-cyan-600">15</div>
+                    <div className="text-xs text-muted-foreground">Day Forecast</div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <BarChart3 className="h-4 w-4 text-blue-600" />
+                    <span className="text-sm">Price trend analysis</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Bell className="h-4 w-4 text-blue-600" />
+                    <span className="text-sm">Sell timing alerts</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Globe className="h-4 w-4 text-blue-600" />
+                    <span className="text-sm">Export opportunities</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full text-white font-medium">
+              <Sparkles className="h-5 w-5 mr-2" />
+              More AI tools coming soon!
+            </div>
+          </div>
         </div>
       </section>
 
