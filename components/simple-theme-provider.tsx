@@ -8,22 +8,20 @@ interface SimpleThemeProviderProps {
   attribute?: "class" | "data-theme"
   defaultTheme?: string
   enableSystem?: boolean
-  themes?: string[]
 }
 
 export function SimpleThemeProvider({ 
   children, 
   attribute = "class",
-  defaultTheme = "nature",
-  enableSystem = true,
-  themes = ['light', 'dark', 'nature']
+  defaultTheme = "system",
+  enableSystem = true
 }: SimpleThemeProviderProps) {
   return (
     <ThemeProvider
       attribute={attribute}
       defaultTheme={defaultTheme}
       enableSystem={enableSystem}
-      themes={themes}
+      disableTransitionOnChange
     >
       {children}
     </ThemeProvider>

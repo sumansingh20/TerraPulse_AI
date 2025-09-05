@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
-import { useAdvancedThemeSafe } from "./advanced-theme-provider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 
@@ -34,7 +33,6 @@ export function Advanced3DCard({
   size = "md",
   ...props
 }: Advanced3DCardProps) {
-  const { enableGlassMorphism, theme, themeAnimation } = useAdvancedThemeSafe()
   const [isHovered, setIsHovered] = React.useState(false)
 
   const sizeStyles = {
@@ -45,9 +43,9 @@ export function Advanced3DCard({
 
   const variantStyles = {
     default: "bg-background border",
-    glass: enableGlassMorphism ? "glass" : "bg-background/80 border",
+    glass: "glass bg-background/80 border",
     gradient: `bg-gradient-to-br from-primary/10 to-secondary/10 border`,
-    elevated: "card-elevated bg-background border"
+    elevated: "shadow-lg bg-background border"
   }
 
   const trendColors = {
@@ -76,38 +74,30 @@ export function Advanced3DCard({
       <div
         className={cn(
           "absolute inset-0 rounded-lg transition-all duration-300",
-          variant === "glass" && enableGlassMorphism && "glass opacity-50",
+          variant === "glass" && "glass opacity-50",
           variant === "elevated" && "shadow-xl",
           isHovered && "translate-x-1 translate-y-1 scale-105"
         )}
         style={{
           background: variant === "gradient" 
-            ? `linear-gradient(135deg, var(--color-theme-primary), var(--color-theme-secondary))`
+            ? `linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))`
             : undefined,
           opacity: 0.1,
           zIndex: -1
         }}
       />
 
-      <Card
+        <Card
         className={cn(
           "relative overflow-hidden transition-all duration-300",
           variantStyles[variant],
           sizeStyles[size],
-          themeAnimation,
           isHovered && "shadow-2xl border-primary/20"
         )}
         {...props}
       >
         {/* Background Pattern Overlay */}
-        <div 
-          className={cn(
-            "absolute inset-0 opacity-5 pattern-organic",
-            theme === "earth" && "pattern-soil"
-          )}
-        />
-
-        <CardHeader className={cn("relative z-10", size === "sm" && "pb-2")}>
+        <div className="absolute inset-0 opacity-5" />        <CardHeader className={cn("relative z-10", size === "sm" && "pb-2")}>
           <div className="flex items-start justify-between">
             <div className="space-y-1">
               <CardTitle className={cn(

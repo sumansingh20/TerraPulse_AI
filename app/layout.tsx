@@ -4,7 +4,6 @@ import { GeistMono } from 'geist/font/mono'
 import { SimpleThemeProvider } from '@/components/simple-theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
-import '../styles/themes.css'
 
 export const metadata: Metadata = {
   title: 'TerraPulse AI - Advanced Agricultural Intelligence',
@@ -65,9 +64,8 @@ export default function RootLayout({
       >
         <SimpleThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem={true}
-          themes={['light', 'dark', 'nature']}
         >
           <div className="relative z-10">
             {children}

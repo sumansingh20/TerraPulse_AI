@@ -27,6 +27,23 @@ const themeDescriptions = {
 
 export function SimpleThemeSelector() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button variant="outline" size="sm">
+        <Palette className="h-4 w-4 mr-2" />
+        Theme
+        <Badge variant="secondary" className="ml-2 text-xs">
+          system
+        </Badge>
+      </Button>
+    )
+  }
 
   return (
     <DropdownMenu>
