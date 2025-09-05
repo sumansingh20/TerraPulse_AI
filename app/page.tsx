@@ -363,7 +363,9 @@ export default function TerraPulseAI() {
             </p>
           </div>
           <div className="hover:scale-[1.01] transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
-            <RealTimeDashboard />
+            <ClientOnly fallback={<div className="h-96 bg-muted/20 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading Dashboard...</div>}>
+              <RealTimeDashboard />
+            </ClientOnly>
           </div>
         </div>
       </section>
