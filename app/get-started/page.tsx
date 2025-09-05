@@ -26,12 +26,12 @@ import {
   Building,
   User
 } from "lucide-react"
-import { Advanced3DCard, MetricCard, GlassCard } from "@/components/advanced-3d-card"
-import { useAdvancedThemeSafe } from "@/components/advanced-theme-provider"
+// import { Advanced3DCard, MetricCard, GlassCard } from "@/components/advanced-3d-card"
+// import { useAdvancedThemeSafe } from "@/components/advanced-theme-provider"
 import Link from "next/link"
 
 export default function GetStarted() {
-  const { theme, enableGlassMorphism } = useAdvancedThemeSafe()
+  // const { theme, enableGlassMorphism } = useAdvancedThemeSafe()
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     organizationType: "",
@@ -179,7 +179,7 @@ export default function GetStarted() {
           <h2 className="text-3xl font-bold text-center mb-8">What You'll Get</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <Advanced3DCard key={index} className="h-full">
+              <Card key={index} className="h-full">
                 <CardHeader>
                   <feature.icon className="h-8 w-8 text-primary mb-4" />
                   <CardTitle className="text-lg">{feature.title}</CardTitle>
@@ -195,14 +195,14 @@ export default function GetStarted() {
                     ))}
                   </ul>
                 </CardContent>
-              </Advanced3DCard>
+              </Card>
             ))}
           </div>
         </div>
 
         {/* Registration Form */}
         <div className="max-w-4xl mx-auto">
-          <GlassCard className="p-8">
+          <Card className="p-8">
             {/* Progress Steps */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
@@ -407,7 +407,7 @@ export default function GetStarted() {
                 </Button>
               )}
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
         {/* Support Section */}

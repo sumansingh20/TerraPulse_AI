@@ -6,29 +6,24 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { 
-  MapPin, 
   Satellite, 
   Layers, 
   Zap, 
   TrendingUp, 
-  Eye, 
   Activity,
   Leaf,
   Droplets,
   Thermometer,
   Wind,
-  Sun,
   CloudRain,
   BarChart3,
-  AlertTriangle,
-  CheckCircle2,
   Radio,
   Navigation,
   Maximize2,
   Settings
 } from "lucide-react"
-import { useState, useEffect, useMemo } from "react"
-import { MetricCard, GlassCard } from "./advanced-3d-card"
+import { useState, useEffect } from "react"
+
 
 // Dynamically import map components to avoid SSR issues
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false })
@@ -54,8 +49,8 @@ if (typeof window !== 'undefined') {
 
 export function RealInteractiveMap() {
   const [selectedLayer, setSelectedLayer] = useState("satellite")
-  const [activeRegion, setActiveRegion] = useState("maharashtra")
-  const [mapView, setMapView] = useState("overview")
+  const [, setActiveRegion] = useState("maharashtra")
+  const [, setMapView] = useState("overview")
   const [selectedFarm, setSelectedFarm] = useState<string | null>(null)
   const [liveData, setLiveData] = useState({
     carbonSequestration: 2.3,
@@ -192,60 +187,60 @@ export function RealInteractiveMap() {
     <div className="space-y-6">
       {/* Real-time Metrics Row */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <MetricCard
-          title="Carbon"
-          value={liveData.carbonSequestration.toFixed(1)}
-          unit="tCO2/ha"
-          trend="up"
-          trendValue="+5.2%"
-          icon={<Leaf className="h-4 w-4" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Soil Health"
-          value={liveData.soilHealth.toFixed(0)}
-          unit="/100"
-          trend="up"
-          trendValue="+2.1%"
-          icon={<BarChart3 className="h-4 w-4" />}
-          size="sm"
-        />
-        <MetricCard
-          title="Temperature"
-          value={liveData.temperature.toFixed(0)}
-          unit="°C"
-          trend="stable"
-          trendValue="±0.5°"
-          icon={<Thermometer className="h-4 w-4" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Humidity"
-          value={liveData.humidity.toFixed(0)}
-          unit="%"
-          trend="down"
-          trendValue="-3.2%"
-          icon={<Droplets className="h-4 w-4" />}
-          size="sm"
-        />
-        <MetricCard
-          title="Wind Speed"
-          value={liveData.windSpeed.toFixed(0)}
-          unit="km/h"
-          trend="up"
-          trendValue="+1.8%"
-          icon={<Wind className="h-4 w-4" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Rainfall"
-          value={liveData.rainfall.toFixed(0)}
-          unit="mm"
-          trend="up"
-          trendValue="+12%"
-          icon={<CloudRain className="h-4 w-4" />}
-          size="sm"
-        />
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Leaf className="h-4 w-4" />Carbon</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.carbonSequestration.toFixed(1)} <span className="text-sm font-normal">tCO2/ha</span></div>
+            <p className="text-xs text-green-600">+5.2%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><BarChart3 className="h-4 w-4" />Soil Health</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.soilHealth.toFixed(0)} <span className="text-sm font-normal">/100</span></div>
+            <p className="text-xs text-green-600">+2.1%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Thermometer className="h-4 w-4" />Temperature</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.temperature.toFixed(0)} <span className="text-sm font-normal">°C</span></div>
+            <p className="text-xs text-muted-foreground">±0.5°</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Droplets className="h-4 w-4" />Humidity</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.humidity.toFixed(0)} <span className="text-sm font-normal">%</span></div>
+            <p className="text-xs text-red-600">-3.2%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Wind className="h-4 w-4" />Wind Speed</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.windSpeed.toFixed(0)} <span className="text-sm font-normal">km/h</span></div>
+            <p className="text-xs text-green-600">+1.8%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><CloudRain className="h-4 w-4" />Rainfall</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.rainfall.toFixed(0)} <span className="text-sm font-normal">mm</span></div>
+            <p className="text-xs text-green-600">+12%</p>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">

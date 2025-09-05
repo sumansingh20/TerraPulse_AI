@@ -15,7 +15,6 @@ import {
   Sun,
   CloudRain,
   Sprout,
-  Truck,
   CreditCard,
   Bell,
   Settings,
@@ -28,11 +27,9 @@ import {
 } from "lucide-react"
 import { ClientOnly } from "@/components/client-only"
 import { InteractiveMap } from "@/components/enhanced-interactive-map"
-import { useAdvancedThemeSafe } from "@/components/advanced-theme-provider"
 import Link from "next/link"
 
 export default function FarmerPortal() {
-  const { theme } = useAdvancedThemeSafe()
   const [farmerData] = useState({
     name: "Rajesh Kumar Sharma",
     farmName: "Green Valley Farm",

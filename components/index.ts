@@ -19,7 +19,7 @@ export { AdvancedAnalytics as PredictiveAnalyticsEngine } from './advanced-analy
 // DASHBOARD & METRICS
 // =================
 export { RealTimeDashboard as FarmDashboard } from './real-time-dashboard'
-export { MetricCard, GlassCard, GradientCard, CardGrid } from './advanced-3d-card'
+
 
 // =================
 // AGRICULTURE & MONITORING

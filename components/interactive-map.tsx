@@ -25,11 +25,9 @@ import {
   Radio
 } from "lucide-react"
 import { useState, useEffect } from "react"
-import { useAdvancedThemeSafe } from "./advanced-theme-provider"
-import { Advanced3DCard, MetricCard, GlassCard } from "./advanced-3d-card"
+
 
 export function InteractiveMap() {
-  const { theme, enableGlassMorphism } = useAdvancedThemeSafe()
   const [selectedLayer, setSelectedLayer] = useState("satellite")
   const [activeRegion, setActiveRegion] = useState("maharashtra")
   const [liveData, setLiveData] = useState({
@@ -128,66 +126,66 @@ export function InteractiveMap() {
     <div className="space-y-8">
       {/* Real-time Metrics Row */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <MetricCard
-          title="Carbon"
-          value={liveData.carbonSequestration.toFixed(1)}
-          unit="tCO2/ha"
-          trend="up"
-          trendValue="+5.2%"
-          icon={<Leaf className="h-5 w-5" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Soil Health"
-          value={liveData.soilHealth.toFixed(0)}
-          unit="/100"
-          trend="up"
-          trendValue="+2.1%"
-          icon={<BarChart3 className="h-5 w-5" />}
-          size="sm"
-        />
-        <MetricCard
-          title="Temperature"
-          value={liveData.temperature.toFixed(0)}
-          unit="°C"
-          trend="stable"
-          trendValue="±0.5°"
-          icon={<Thermometer className="h-5 w-5" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Humidity"
-          value={liveData.humidity.toFixed(0)}
-          unit="%"
-          trend="down"
-          trendValue="-3.2%"
-          icon={<Droplets className="h-5 w-5" />}
-          size="sm"
-        />
-        <MetricCard
-          title="Wind Speed"
-          value={liveData.windSpeed.toFixed(0)}
-          unit="km/h"
-          trend="up"
-          trendValue="+1.8%"
-          icon={<Wind className="h-5 w-5" />}
-          size="sm"
-        />
-        <GlassCard
-          title="Rainfall"
-          value={liveData.rainfall.toFixed(0)}
-          unit="mm"
-          trend="up"
-          trendValue="+12%"
-          icon={<CloudRain className="h-5 w-5" />}
-          size="sm"
-        />
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Leaf className="h-5 w-5" />Carbon</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.carbonSequestration.toFixed(1)} <span className="text-sm font-normal">tCO2/ha</span></div>
+            <p className="text-xs text-green-600">+5.2%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><BarChart3 className="h-5 w-5" />Soil Health</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.soilHealth.toFixed(0)} <span className="text-sm font-normal">/100</span></div>
+            <p className="text-xs text-green-600">+2.1%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Thermometer className="h-5 w-5" />Temperature</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.temperature.toFixed(0)} <span className="text-sm font-normal">°C</span></div>
+            <p className="text-xs text-muted-foreground">±0.5°</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Droplets className="h-5 w-5" />Humidity</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.humidity.toFixed(0)} <span className="text-sm font-normal">%</span></div>
+            <p className="text-xs text-red-600">-3.2%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Wind className="h-5 w-5" />Wind Speed</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.windSpeed.toFixed(0)} <span className="text-sm font-normal">km/h</span></div>
+            <p className="text-xs text-green-600">+1.8%</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2"><CloudRain className="h-5 w-5" />Rainfall</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-lg font-bold">{liveData.rainfall.toFixed(0)} <span className="text-sm font-normal">mm</span></div>
+            <p className="text-xs text-green-600">+12%</p>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Enhanced Map Visualization */}
         <div className="lg:col-span-2">
-          <Card className={`${enableGlassMorphism ? 'glass' : 'bg-card'} border-primary/30 h-[600px] overflow-hidden`}>
+          <Card className={`bg-card border-primary/30 h-[600px] overflow-hidden`}>
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -270,7 +268,7 @@ export function InteractiveMap() {
                       
                       {/* Farm Info Tooltip */}
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        <div className={`${enableGlassMorphism ? 'glass' : 'bg-card'} p-3 rounded-lg border shadow-lg min-w-[200px]`}>
+                        <div className={`bg-card p-3 rounded-lg border shadow-lg min-w-[200px]`}>
                           <h4 className="font-semibold text-sm text-foreground">{farm.name}</h4>
                           <p className="text-xs text-muted-foreground">{farm.crop}</p>
                           <div className="mt-2 flex items-center gap-2">
@@ -286,7 +284,7 @@ export function InteractiveMap() {
 
                 {/* Real-time Data Overlays */}
                 <div className="absolute top-4 left-4">
-                  <div className={`${enableGlassMorphism ? 'glass' : 'bg-card/90'} p-3 rounded-lg border border-primary/30 space-y-2`}>
+                  <div className={`bg-card/90 p-3 rounded-lg border border-primary/30 space-y-2`}>
                     <div className="flex items-center gap-2">
                       <Leaf className="h-4 w-4 text-green-500" />
                       <span className="text-xs text-muted-foreground">Carbon Sequestration</span>
@@ -301,7 +299,7 @@ export function InteractiveMap() {
                 </div>
 
                 <div className="absolute top-4 right-4">
-                  <div className={`${enableGlassMorphism ? 'glass' : 'bg-card/90'} p-3 rounded-lg border border-blue-500/30 space-y-2`}>
+                  <div className={`bg-card/90 p-3 rounded-lg border border-blue-500/30 space-y-2`}>
                     <div className="flex items-center gap-2">
                       <BarChart3 className="h-4 w-4 text-blue-500" />
                       <span className="text-xs text-muted-foreground">Soil Health Index</span>
@@ -314,7 +312,7 @@ export function InteractiveMap() {
                 </div>
 
                 <div className="absolute bottom-4 left-4">
-                  <div className={`${enableGlassMorphism ? 'glass' : 'bg-card/90'} p-3 rounded-lg border border-orange-500/30 space-y-2`}>
+                  <div className={`bg-card/90 p-3 rounded-lg border border-orange-500/30 space-y-2`}>
                     <div className="flex items-center gap-2">
                       <Sun className="h-4 w-4 text-orange-500" />
                       <span className="text-xs text-muted-foreground">Weather Conditions</span>
@@ -327,7 +325,7 @@ export function InteractiveMap() {
                 </div>
 
                 <div className="absolute bottom-4 right-4">
-                  <div className={`${enableGlassMorphism ? 'glass' : 'bg-card/90'} p-3 rounded-lg border border-primary/30`}>
+                  <div className={`bg-card/90 p-3 rounded-lg border border-primary/30`}>
                     <div className="flex items-center gap-2 mb-2">
                       <Eye className="h-4 w-4 text-primary" />
                       <span className="text-xs text-muted-foreground">Monitoring Status</span>

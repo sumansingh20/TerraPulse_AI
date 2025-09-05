@@ -23,10 +23,8 @@ import {
 } from "lucide-react"
 import { AIChatbot } from "@/components/ai-chatbot"
 import { RealTimeDashboard } from "@/components/real-time-dashboard"
-import { RealInteractiveMap } from "@/components/real-interactive-map"
 import { SimpleThemeSelector } from "@/components/simple-theme-selector"
 // import { MetricCard, GlassCard, GradientCard, CardGrid } from "@/components/advanced-3d-card"
-import { ClientOnly } from "@/components/client-only"
 import { MainNavigation } from "@/components/main-navigation"
 
 export default function TerraPulseAI() {
@@ -363,9 +361,13 @@ export default function TerraPulseAI() {
             </p>
           </div>
           <div className="hover:scale-[1.01] transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
-            <ClientOnly fallback={<div className="h-96 bg-muted/20 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading Dashboard...</div>}>
-              <RealTimeDashboard />
-            </ClientOnly>
+            <div className="h-96 bg-muted/20 rounded-lg flex items-center justify-center text-muted-foreground">
+              <div className="text-center">
+                <BarChart3 className="h-16 w-16 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold">NABARD Analytics Dashboard</h3>
+                <p className="text-sm text-muted-foreground mt-2">Real-time agricultural data coming soon</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -386,9 +388,13 @@ export default function TerraPulseAI() {
             </p>
           </div>
           <div className="hover:scale-[1.01] transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
-            <ClientOnly fallback={<div className="h-96 bg-muted/20 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading Interactive Map...</div>}>
-              <RealInteractiveMap />
-            </ClientOnly>
+            <div className="h-96 bg-muted/20 rounded-lg flex items-center justify-center text-muted-foreground">
+              <div className="text-center">
+                <Satellite className="h-16 w-16 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold">AI-Powered Crop Analytics</h3>
+                <p className="text-sm text-muted-foreground mt-2">Interactive satellite monitoring coming soon</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
