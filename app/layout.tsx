@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { SimpleThemeProvider } from '@/components/simple-theme-provider'
+import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 
@@ -62,7 +62,7 @@ export default function RootLayout({
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-background`}
         suppressHydrationWarning
       >
-        <SimpleThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
@@ -71,7 +71,7 @@ export default function RootLayout({
             {children}
           </div>
           <Toaster />
-        </SimpleThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
