@@ -1,6 +1,8 @@
 # 🌱 TerraPulse AI - Agricultural Intelligence Platform
 
 > **AI-Powered Agricultural Monitoring & Carbon Credits with Role-Based Authentication**
+> 
+> **Last Updated**: September 6, 2025 | **Status**: 🚀 Live on Netlify
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.16-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
