@@ -23,7 +23,7 @@ import {
 } from "lucide-react"
 import { AIChatbot } from "@/components/ai-chatbot"
 import { RealTimeDashboard } from "@/components/real-time-dashboard"
-import { OptimizedInteractiveMap } from "@/components/optimized-interactive-map"
+import { RealInteractiveMap } from "@/components/real-interactive-map"
 import { AdvancedThemeSelector } from "@/components/advanced-theme-selector"
 import { MetricCard, GlassCard, GradientCard, CardGrid } from "@/components/advanced-3d-card"
 import { ClientOnly } from "@/components/client-only"
@@ -379,7 +379,7 @@ export default function TerraPulseAI() {
           </div>
           <div className="hover:scale-[1.01] transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
             <ClientOnly fallback={<div className="h-96 bg-muted/20 rounded-lg animate-pulse flex items-center justify-center text-muted-foreground">Loading Interactive Map...</div>}>
-              <OptimizedInteractiveMap />
+              <RealInteractiveMap />
             </ClientOnly>
           </div>
         </div>

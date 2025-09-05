@@ -1,11 +1,12 @@
 # 🌱 TerraPulse AI - Agricultural Intelligence Platform
 
-> **AI-Powered Agricultural Monitoring & Carbon Credits**
+> **AI-Powered Agricultural Monitoring & Carbon Credits with Role-Based Authentication**
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.16-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-blue)](https://tailwindcss.com/)
+[![Authentication](https://img.shields.io/badge/Auth-Role--Based-green)](https://github.com)
 
 ## 🚀 **Quick Start**
 
@@ -19,8 +20,61 @@ npm run dev
 # Open http://localhost:3000
 ```
 
+## 🔐 **Demo Access (Hackathon Ready)**
+
+Access the platform with demo credentials:
+
+```
+🌱 Farmer Access:
+Email: demo@farmer.com
+Password: demo123
+Role: Farmer
+
+🏢 Company Access:  
+Email: demo@company.com
+Password: demo123
+Role: Company
+
+🛡️ Admin Access:
+Email: demo@admin.com
+Password: demo123
+Role: Admin
+```
+
+**Quick Demo Login**: Use any email with "demo" or password "demo123"
+
 ## 🎯 **Features**
 
+### **🔐 Authentication System**
+- **Role-Based Access Control**: Farmer, Company, Admin roles
+- **Secure Login/Register**: Complete authentication flow
+- **Password Recovery**: Forgot password functionality
+- **Demo Access**: Quick login for presentations
+- **Route Protection**: Middleware-based security
+- **Session Management**: Cookie-based authentication
+
+### **🌱 Farmer Dashboard**
+- **Real-time Weather**: Live weather monitoring
+- **Farm Analytics**: Crop health and yield predictions
+- **Interactive Maps**: Satellite monitoring integration
+- **Alert System**: Smart notifications and warnings
+- **Carbon Tracking**: Automated carbon credit calculations
+
+### **🏢 Company Dashboard**  
+- **Platform Analytics**: User engagement metrics
+- **Revenue Tracking**: Business performance KPIs
+- **Regional Insights**: Geographic performance data
+- **Team Management**: Collaboration tools
+- **Growth Metrics**: Platform expansion analytics
+
+### **🛡️ Admin Dashboard**
+- **User Management**: Account approvals and moderation
+- **System Monitoring**: Health and performance metrics
+- **Security Controls**: Access management and logs
+- **Platform Oversight**: Global system administration
+- **Emergency Controls**: Critical system management
+
+### **🚀 Core Features**
 - **🛰️ Satellite Monitoring**: Real-time agricultural land monitoring
 - **🤖 AI Assistant**: Intelligent farming recommendations
 - **📊 Predictive Analytics**: ML-powered crop and yield predictions
@@ -33,23 +87,39 @@ npm run dev
 
 ```
 TerraPulse_AI/
-├── src/
-│   ├── components/
-│   │   ├── maps/                # Satellite & agricultural maps
-│   │   ├── ai/                  # AI & ML components
-│   │   ├── dashboard/           # Real-time dashboards
-│   │   ├── agriculture/         # Agricultural tools
-│   │   ├── finance/             # Carbon credits & finance
-│   │   ├── satellite/           # Satellite data processing
-│   │   ├── layout/              # Navigation & layout
-│   │   ├── theme/               # Theme & styling
-│   │   └── ui/                  # Reusable UI components
-│   ├── hooks/                   # Custom React hooks
-│   ├── utils/                   # Utility functions
-│   └── types/                   # TypeScript definitions
-├── app/                         # Next.js app directory
-├── docs/                        # Documentation
-└── public/                      # Static assets
+├── app/
+│   ├── auth/                    # Authentication pages
+│   │   ├── login/              # Login page with role selection
+│   │   ├── register/           # Registration with validation
+│   │   └── forgot-password/    # Password recovery
+│   ├── farmer/                 # Farmer-specific pages
+│   │   └── dashboard/          # Farmer dashboard
+│   ├── company/                # Company-specific pages
+│   │   └── dashboard/          # Company dashboard
+│   ├── admin/                  # Admin-specific pages
+│   │   └── dashboard/          # Admin control panel
+│   ├── api/                    # API routes
+│   │   └── contact/            # Contact form endpoint
+│   ├── about/                  # About page
+│   ├── contact/                # Contact page
+│   ├── demo/                   # Demo page
+│   ├── pricing/                # Pricing page
+│   ├── technology/             # Technology page
+│   └── globals.css             # Global styles
+├── components/
+│   ├── ui/                     # shadcn/ui components
+│   ├── interactive-map.tsx     # Interactive map component
+│   ├── real-time-dashboard.tsx # Dashboard components
+│   ├── advanced-analytics.tsx  # Analytics components
+│   ├── ai-chatbot.tsx         # AI assistant
+│   └── nabard-tools.tsx       # NABARD integration
+├── lib/
+│   ├── auth.tsx               # Authentication context
+│   └── utils.ts               # Utility functions
+├── middleware.ts              # Route protection middleware
+├── hooks/                     # Custom React hooks
+├── public/                    # Static assets
+└── styles/                    # Additional styles
 ```
 
 ## 🛠️ **Tech Stack**
@@ -96,7 +166,35 @@ TerraPulse_AI/
 - `carbon-credit-calculator.tsx` - Carbon credit calculations
 - `blockchain-credit-verifier.tsx` - Blockchain verification
 
-## 🔧 **Development**
+## � **Authentication & Security**
+
+### **Role-Based Access Control**
+- **Three User Types**: Farmer, Company Team Member, Administrator
+- **Protected Routes**: Middleware-based route protection
+- **Session Management**: Secure cookie-based authentication
+- **Demo Mode**: Quick access for hackathon presentations
+
+### **Security Features**
+- **Route Middleware**: Automatic role verification
+- **Password Recovery**: Email-based password reset flow
+- **Form Validation**: Comprehensive client-side validation
+- **CSRF Protection**: Built-in Next.js security features
+
+### **Authentication Flow**
+```typescript
+// Login with role selection
+const success = await login(email, password, role)
+if (success) {
+  // Redirect to appropriate dashboard based on role
+  router.push(`/${role}/dashboard`)
+}
+
+// Access protected routes
+// Middleware automatically validates user role
+// Redirects to login if unauthorized
+```
+
+## �🔧 **Development**
 
 ### **Adding New Components**
 
@@ -133,12 +231,45 @@ import { cn } from '@/src/utils/class-utils'
 
 ## 📱 **Pages & Routes**
 
+### **🔐 Authentication Routes**
+- `/auth/login` - User login with role selection (Farmer/Company/Admin)
+- `/auth/register` - User registration with role-specific fields
+- `/auth/forgot-password` - Password recovery flow
+
+### **🌱 Farmer Routes** (Protected)
+- `/farmer/dashboard` - Real-time farm monitoring dashboard
+- `/farmer/analytics` - Crop analytics and predictions
+- `/farmer/carbon-credits` - Carbon credit tracking
+
+### **🏢 Company Routes** (Protected)
+- `/company/dashboard` - Platform analytics and metrics
+- `/company/users` - User management interface
+- `/company/reports` - Business intelligence reports
+
+### **🛡️ Admin Routes** (Protected)
+- `/admin/dashboard` - System administration panel
+- `/admin/users` - Global user management
+- `/admin/security` - Security monitoring and logs
+- `/admin/system` - System health and maintenance
+
+### **🌍 Public Routes**
 - `/` - Landing page with hero, features, and team
 - `/demo` - Interactive platform demonstration
 - `/about` - About TerraPulse AI
 - `/contact` - Contact information
 - `/pricing` - Pricing plans
 - `/technology` - Technology overview
+- `/team` - Team information
+- `/careers` - Career opportunities
+- `/press` - Press releases and media
+
+### **🔌 API Routes**
+- `/api/contact` - Contact form submission endpoint
+- `/api/auth/login` - Authentication endpoint (planned)
+- `/api/auth/register` - User registration endpoint (planned)
+- `/api/farmer/dashboard` - Farmer dashboard data (planned)
+- `/api/company/analytics` - Company analytics data (planned)
+- `/api/admin/system` - System administration APIs (planned)
 
 ## 🎨 **Design System**
 
@@ -159,7 +290,9 @@ import { cn } from '@/src/utils/class-utils'
 - Smooth animations
 - Responsive design
 
-## 🚀 **Deployment**
+## 🚀 **Deployment & Hackathon Ready**
+
+### **Production Deployment**
 
 ```bash
 # Build for production
@@ -170,7 +303,40 @@ npm start
 
 # Deploy to Vercel (recommended)
 vercel --prod
+
+# Deploy to Netlify
+npm run build && netlify deploy --prod
 ```
+
+### **Hackathon Demo Setup**
+
+```bash
+# Quick setup for presentation
+git clone https://github.com/sumansingh20/TerraPulse_AI
+cd TerraPulse_AI
+pnpm install
+npm run dev
+
+# Open http://localhost:3000
+# Use demo credentials for quick access
+```
+
+### **Demo Presentation Flow**
+1. **Landing Page** - Show platform overview and features
+2. **Authentication** - Demonstrate role-based login system
+3. **Farmer Dashboard** - Real-time monitoring and AI features
+4. **Company Dashboard** - Business analytics and metrics
+5. **Admin Panel** - System administration capabilities
+6. **Interactive Demo** - Satellite maps and AI chatbot
+
+### **Key Selling Points**
+- ✅ **Complete Authentication System** with 3 user roles
+- ✅ **Real-time Dashboards** with live data visualization
+- ✅ **AI-Powered Features** for smart agriculture
+- ✅ **Satellite Integration** for farm monitoring
+- ✅ **Carbon Credit Tracking** for sustainability
+- ✅ **Responsive Design** works on all devices
+- ✅ **Production Ready** with proper security measures
 
 ## 📖 **Documentation**
 

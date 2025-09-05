@@ -38,45 +38,78 @@ export default function ContactPage() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitMessage("")
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        setSubmitMessage(result.message)
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          inquiryType: "",
+          message: "",
+        })
+      } else {
+        setSubmitMessage(result.message || "There was an error sending your message.")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setSubmitMessage("Network error. Please check your connection and try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactTypes = [
     {
-      title: "Partnership Inquiries",
-      description: "NABARD, FPOs, and strategic partnerships",
+      title: "Project Inquiries",
+      description: "Questions about our hackathon project and implementation",
       icon: Handshake,
-      email: "partnerships@terrapulse.ai",
+      email: "project@terrapulse.dev",
       phone: "+91 98765 43210",
       responseTime: "24 hours",
       color: "primary",
     },
     {
-      title: "Sales & Pricing",
-      description: "Product demos, pricing, and enterprise solutions",
+      title: "Technical Demo",
+      description: "Request a demo of our AI-powered agricultural platform",
       icon: Building,
-      email: "sales@terrapulse.ai",
+      email: "demo@terrapulse.dev",
       phone: "+91 98765 43211",
       responseTime: "4 hours",
       color: "accent",
     },
     {
-      title: "Technical Support",
-      description: "Platform help, API support, and troubleshooting",
+      title: "Development Team",
+      description: "Technical questions about our platform and APIs",
       icon: MessageCircle,
-      email: "support@terrapulse.ai",
+      email: "dev@terrapulse.dev",
       phone: "+91 98765 43212",
       responseTime: "2 hours",
       color: "primary",
     },
     {
-      title: "Media & Press",
-      description: "Press inquiries, interviews, and media kits",
+      title: "General Contact",
+      description: "General inquiries and collaboration opportunities",
       icon: Newspaper,
-      email: "media@terrapulse.ai",
+      email: "hello@terrapulse.dev",
       phone: "+91 98765 43213",
       responseTime: "12 hours",
       color: "accent",
@@ -85,25 +118,25 @@ export default function ContactPage() {
 
   const offices = [
     {
-      city: "New Delhi",
-      type: "Headquarters",
-      address: "Block A, Sector 62, Noida, Uttar Pradesh 201309",
+      city: "Development Hub",
+      type: "Hackathon Project Team",
+      address: "IIT Patna, Bihta, Bihar 801106",
       phone: "+91 11 4567 8900",
-      email: "delhi@terrapulse.ai",
+      email: "team@terrapulse.dev",
     },
     {
-      city: "Bangalore",
-      type: "Technology Center",
-      address: "Koramangala, Bangalore, Karnataka 560034",
+      city: "Testing Center",
+      type: "Demo & Prototype Lab",
+      address: "Agricultural Research Institute, India",
       phone: "+91 80 4567 8901",
-      email: "bangalore@terrapulse.ai",
+      email: "demo@terrapulse.dev",
     },
     {
-      city: "Pune",
-      type: "Agricultural Research",
-      address: "Hinjewadi Phase 1, Pune, Maharashtra 411057",
+      city: "Virtual Office",
+      type: "Online Collaboration",
+      address: "Available 24/7 for project discussions",
       phone: "+91 20 4567 8902",
-      email: "pune@terrapulse.ai",
+      email: "hello@terrapulse.dev",
     },
   ]
 
@@ -321,12 +354,19 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {submitMessage && (
+                  <div className={`p-4 rounded-lg ${submitMessage.includes('Thank you') ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                    {submitMessage}
+                  </div>
+                )}
+
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 text-lg py-6"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 text-lg py-6 disabled:opacity-50"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </CardContent>
@@ -386,10 +426,10 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground tracking-tight">
-              Partnership Opportunities
+              Hackathon Project Showcase
             </h2>
             <p className="text-xl text-muted-foreground text-balance">
-              Join us in transforming agriculture across India
+              Connect with our development team for project demonstrations and discussions
             </p>
           </div>
 
@@ -397,44 +437,44 @@ export default function ContactPage() {
             <Card className="glass border-primary/30 hover:scale-105 transition-all duration-300 text-center">
               <CardHeader>
                 <Building className="h-12 w-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-xl">NABARD Partnership</CardTitle>
+                <CardTitle className="text-xl">Hackathon Demo</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">Strategic collaboration for nationwide MRV deployment</p>
-                <Button className="w-full">Learn More</Button>
+                <p className="text-muted-foreground mb-4">Live demonstration of our AI agricultural platform</p>
+                <Button className="w-full">Schedule Demo</Button>
               </CardContent>
             </Card>
 
             <Card className="glass border-primary/30 hover:scale-105 transition-all duration-300 text-center">
               <CardHeader>
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-xl">FPO Integration</CardTitle>
+                <CardTitle className="text-xl">Project Team</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">Empower farmer producer organizations with AI technology</p>
-                <Button className="w-full">Join Network</Button>
+                <p className="text-muted-foreground mb-4">Meet the developers behind TerraPulse AI</p>
+                <Button className="w-full">Meet Team</Button>
               </CardContent>
             </Card>
 
             <Card className="glass border-primary/30 hover:scale-105 transition-all duration-300 text-center">
               <CardHeader>
                 <Globe className="h-12 w-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-xl">Technology Partners</CardTitle>
+                <CardTitle className="text-xl">Technology Stack</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">Integrate with our platform and expand your reach</p>
-                <Button className="w-full">Partner with Us</Button>
+                <p className="text-muted-foreground mb-4">Learn about our technical implementation</p>
+                <Button className="w-full">View Tech</Button>
               </CardContent>
             </Card>
 
             <Card className="glass border-primary/30 hover:scale-105 transition-all duration-300 text-center">
               <CardHeader>
                 <Briefcase className="h-12 w-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-xl">Career Opportunities</CardTitle>
+                <CardTitle className="text-xl">GitHub Repository</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">Join our mission to revolutionize agriculture</p>
-                <Button className="w-full">View Openings</Button>
+                <p className="text-muted-foreground mb-4">Explore our open-source codebase</p>
+                <Button className="w-full">View Code</Button>
               </CardContent>
             </Card>
           </div>
