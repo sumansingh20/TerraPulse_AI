@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/next'
 import { AdvancedThemeProvider } from '@/components/advanced-theme-provider'
-import { ParticleEffect, FloatingElements } from '@/components/particle-effects'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import '../styles/themes.css'
@@ -70,11 +68,8 @@ export default function RootLayout({
           <div className="relative z-10">
             {children}
           </div>
-          <ParticleEffect />
-          <FloatingElements />
           <Toaster />
         </AdvancedThemeProvider>
-        <Analytics />
       </body>
     </html>
   )
