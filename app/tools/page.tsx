@@ -289,6 +289,12 @@ export default function ToolsPage() {
                         <span className="text-muted-foreground">Usage:</span>
                         <span className="font-medium text-emerald-600">{tool.usage}</span>
                       </div>
+                      
+                      <Button asChild className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700">
+                        <Link href={`/tools/${tool.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
                     </CardContent>
                   </Card>
                 ))}
@@ -332,6 +338,12 @@ export default function ToolsPage() {
                         <span className="text-muted-foreground">Usage:</span>
                         <span className="font-medium">{tool.usage}</span>
                       </div>
+                      
+                      <Button asChild className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
+                        <Link href={`/tools/${tool.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
                     </CardContent>
                   </Card>
                 ))}
@@ -375,6 +387,12 @@ export default function ToolsPage() {
                         <span className="text-muted-foreground">Usage:</span>
                         <span className="font-medium">{tool.usage}</span>
                       </div>
+                      
+                      <Button asChild className="w-full mt-4 bg-purple-600 hover:bg-purple-700">
+                        <Link href={`/tools/${tool.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
                     </CardContent>
                   </Card>
                 ))}
