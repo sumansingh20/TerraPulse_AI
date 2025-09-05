@@ -37,14 +37,20 @@ export default function TerraPulseAI() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <Leaf className="h-7 w-7 text-white animate-float" />
+              <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 via-green-600 to-green-700 rounded-2xl flex items-center justify-center shadow-xl border border-green-400/30">
+                <Leaf className="h-8 w-8 text-white animate-float drop-shadow-lg" />
               </div>
-              <Sparkles className="h-4 w-4 text-yellow-500 absolute -top-1 -right-1 animate-pulse" />
+              <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse">
+                <Sparkles className="h-3 w-3 text-white" />
+              </div>
             </div>
             <div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">TerraPulse AI</span>
-              <p className="text-xs text-muted-foreground hidden sm:block">AI-Powered Agricultural Monitoring & Carbon Credits</p>
+              <span className="text-3xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-green-700 bg-clip-text text-transparent drop-shadow-sm">
+                TerraPulse AI
+              </span>
+              <p className="text-sm text-muted-foreground hidden sm:block font-medium">
+                🌱 AI-Powered Agricultural Monitoring & Carbon Credits
+              </p>
             </div>
           </div>
           <nav className="hidden lg:flex items-center space-x-6">
@@ -1061,10 +1067,12 @@ export default function TerraPulseAI() {
           <div className="grid md:grid-cols-4 gap-10">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-green-600 rounded-lg flex items-center justify-center">
-                  <Leaf className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 via-green-600 to-green-700 rounded-xl flex items-center justify-center shadow-lg border border-green-400/30">
+                  <Leaf className="h-7 w-7 text-white drop-shadow-lg" />
                 </div>
-                <span className="text-2xl font-bold text-foreground">NABARD Digital India</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-green-700 bg-clip-text text-transparent">
+                  TerraPulse AI
+                </span>
               </div>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Google GenAI × NABARD Hackathon 2025 Winner
