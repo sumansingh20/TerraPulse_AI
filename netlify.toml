@@ -2,6 +2,7 @@
 
 
 
+
 [build]
   publish = "out"
   command = "pnpm install && pnpm run build"
