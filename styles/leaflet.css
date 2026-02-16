@@ -1,0 +1,60 @@
+/* Leaflet CSS imports */
+@import 'leaflet/dist/leaflet.css';
+
+/* Custom map styling */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+  z-index: 1;
+}
+
+.custom-marker {
+  background: none;
+  border: none;
+}
+
+.custom-marker .marker-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.farm-marker {
+  background: linear-gradient(45deg, #10b981, #059669);
+  color: white;
+}
+
+.sensor-marker {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.alert-marker {
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 1rem;
+}
